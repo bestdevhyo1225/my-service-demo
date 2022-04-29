@@ -1,0 +1,38 @@
+server:
+  port: 9001
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:tcp://localhost/~/test
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000
+    open-in-view: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: changeme
+    ssl:
+      enabled: false
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-interval: 10s
+          max-attempts: 5

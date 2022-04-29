@@ -1,0 +1,68 @@
+server:
+  port: 9002
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:tcp://localhost/~/test
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+  data:
+    # Application이 종료 되어이야 MongoDB Connection이 끊기는 부분을 확인했음.
+    # db.serverStatus().connections 쿼리를 통해 Connection 상태를 확인할 수 있음
+    # current : 현재 연결중인 Connection 수
+    # available : 사용 가능한 Connection 수
+    # totalCreated : 현재까지 연결된 모든 Connection 수 (닫은 연결도 포함됨.)
+    mongodb:
+      uri: mongodb://localhost:27017/my_service?maxPoolSize=100&waitQueueTimeoutMS=3000&maxIdleTimeMS=1800000&maxLifeTimeMS=1800000
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000
+    open-in-view: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: changeme
+    ssl:
+      enabled: false
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 1
+
+retrofit:
+  connectionTimeoutSeconds: 30
+  writeTimeoutSeconds: 60
+  readTimeoutSeconds: 60
+  debugMode: true
+
+resilience4j:
+  circuitbreaker:
+    custom:
+      # 최소요청 횟수 3회 이후, 통계 건수 최근 10건을 평가했을때,
+      # 실패율 60% 이상이 되면, Circuit Breaker가 Open되고, Circuit Breaker 지속시간은 10초동안 유지된다.
+      slidingWindowType: COUNT_BASED # 통계 건수로 측정 (TIME_BASED -> 시간 통계로 측정)
+      slidingWindowSize: 10 # 가장 최근의 통계 건수
+      minimumNumberOfCalls: 3 # 최소 요청 횟수
+      failureRateThreshold: 60 # 실패율
+      waitDurationInOpenState: 10000 # Circuit Breaker 지속 시간 (지속 시간동안 Backend Service를 호출하지 않는다.)
+
+api:
+  command:
+    host: http://localhost:9001
+
+logging:
+  level:
+    com.rabbitmq.client: debug
+    org.springframework.data.mongodb.core.MongoTemplate: debug
