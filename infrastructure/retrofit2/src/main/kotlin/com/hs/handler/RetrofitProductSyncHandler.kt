@@ -13,7 +13,7 @@ import retrofit2.Response
 import java.io.IOException
 
 @Component
-class Retrofit2ProductSyncHandler(
+class RetrofitProductSyncHandler(
     private val commandAppAccessor: CommandApiAccessor,
     private val retrofitErrorResponseHandler: RetrofitErrorResponseHandler,
 ) : ProductSyncHandler {
