@@ -16,12 +16,12 @@ class ProductCommand(
 ) {
 
     fun upsert(productEventId: Long, productId: Long) {
-        val productResultDto = productSyncHandler.request(productId = productId) as FindProductResultDto
+        val productToSync = productSyncHandler.execute(productId = productId) as FindProductResultDto
         val product = Product.create(
             id = productId,
-            name = productResultDto.name,
-            price = productResultDto.price,
-            stockQuantity = productResultDto.stockQuantity
+            name = productToSync.name,
+            price = productToSync.price,
+            stockQuantity = productToSync.stockQuantity
         )
 
         try {

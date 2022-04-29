@@ -19,7 +19,7 @@ class RetrofitProductSyncHandler(
 ) : ProductSyncHandler {
 
     @CircuitBreaker(name = Api.COMMAND)
-    override fun request(productId: Long): Any {
+    override fun execute(productId: Long): Any {
         val call: Call<SuccessResponse<FindProductResultDto>> = commandAppAccessor.getProduct(productId = productId)
 
         val requestFunction = {
