@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 
 @Service
-class ProductCommand(
+class ProductUpsertCommand(
     private val productSyncHandler: ProductSyncHandler,
     @Qualifier(value = "productDocumentRepositoryAdapter")
     private val productDocumentRepository: ProductRepository,
     private val productEventRepository: ProductEventRepository,
 ) {
 
-    fun upsert(productEventId: Long, productId: Long) {
+    fun execute(productEventId: Long, productId: Long) {
         val productToSync = productSyncHandler.execute(productId = productId) as FindProductResultDto
         val product = Product.create(
             id = productToSync.productId,

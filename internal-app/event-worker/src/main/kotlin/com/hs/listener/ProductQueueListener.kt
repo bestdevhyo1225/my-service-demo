@@ -5,7 +5,7 @@ import com.hs.constants.InternalQueueId
 import com.hs.constants.InternalQueueName
 import com.hs.constants.InternalQueueRetry
 import com.hs.event.ProductApplicationEvent
-import com.hs.service.ProductCommand
+import com.hs.service.ProductUpsertCommand
 import com.rabbitmq.client.Channel
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component
 @Component
 class ProductQueueListener(
     private val rabbitTemplate: RabbitTemplate,
-    private val produtCommand: ProductCommand,
+    private val productUpsertCommand: ProductUpsertCommand,
 ) {
 
     private val log: Logger = LoggerFactory.getLogger(this.javaClass)
@@ -30,7 +30,7 @@ class ProductQueueListener(
     fun consumeQueue(event: ProductApplicationEvent, channel: Channel, message: Message) {
         log.info("message : {}", message)
 
-        produtCommand.upsert(productEventId = event.productEventId, productId = event.productId)
+        productUpsertCommand.execute(productEventId = event.productEventId, productId = event.productId)
 
         channel.basicAck(message.messageProperties.deliveryTag, false)
     }
