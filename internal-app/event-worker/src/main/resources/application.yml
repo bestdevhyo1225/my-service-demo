@@ -41,6 +41,11 @@ spring:
         acknowledge-mode: manual
         prefetch: 1
 
+  redis:
+    host: localhost
+    cache:
+      port: 6379
+
 retrofit:
   connectionTimeoutSeconds: 30
   writeTimeoutSeconds: 60
@@ -66,3 +71,4 @@ logging:
   level:
     com.rabbitmq.client: debug
     org.springframework.data.mongodb.core.MongoTemplate: debug
+    com.hs.repository.ProductRedisRepository: debug
