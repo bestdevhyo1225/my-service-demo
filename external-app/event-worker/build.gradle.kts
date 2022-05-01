@@ -9,6 +9,7 @@ dependencies {
     // Project
     implementation(project(":common"))
     implementation(project(":domain"))
+    implementation(project(":infrastructure:jpa"))
     implementation(project(":infrastructure:mongodb"))
     implementation(project(":infrastructure:redis"))
 

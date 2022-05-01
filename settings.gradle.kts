@@ -8,10 +8,8 @@ include("domain")
 
 // External Module
 include("external-app")
-include("external-app:event-consumer-worker")
-findProject(":external-app:event-consumer-worker")?.name = "event-consumer-worker"
-include("external-app:event-publisher-worker")
-findProject(":external-app:event-publisher-worker")?.name = "event-publisher-worker"
+include("external-app:event-worker")
+findProject(":external-app:event-worker")?.name = "event-worker"
 include("external-app:batch")
 findProject(":external-app:batch")?.name = "batch"
 
