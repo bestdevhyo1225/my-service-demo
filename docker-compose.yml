@@ -16,3 +16,11 @@ services:
     container_name: my-service-demo-mongo
     ports:
       - '27017:27017'
+
+  my-service-demo-redis:
+    image: redis
+    container_name: my-service-demo-redis
+    command: redis-server --port 6379
+    ports:
+      - '6379:6379'
+    restart: always
