@@ -7,7 +7,8 @@
 ├── domain
 ├── external-app
 │   ├── batch
-│   └── event-worker
+│   └── event-consumer-worker
+│   └── event-publisher-worker
 ├── infrastructure
 │   ├── jpa
 │   ├── mongodb
@@ -23,4 +24,4 @@
 
 ## 아키텍쳐
 
-<img width="1889" alt="image" src="https://user-images.githubusercontent.com/23515771/166138139-91e5d3ae-e9bf-4e89-a3d2-52de9115c8be.png">
+<img width="1889" alt="image" src="https://user-images.githubusercontent.com/23515771/166138373-8bec01c9-baa7-43a7-aa26-a0c5a51c90a5.png">
