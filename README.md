@@ -7,7 +7,8 @@
 ├── domain
 ├── external-app
 │   ├── batch
-│   └── event-worker
+│   └── event-consumer-worker
+│   └── event-publisher-worker
 ├── infrastructure
 │   ├── jpa
 │   ├── mongodb
