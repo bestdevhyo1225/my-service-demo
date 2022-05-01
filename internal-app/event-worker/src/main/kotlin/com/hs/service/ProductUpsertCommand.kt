@@ -4,6 +4,7 @@ import com.hs.dto.service.output.FindProductResultDto
 import com.hs.product.entity.Product
 import com.hs.product.repository.ProductEventRepository
 import com.hs.product.repository.ProductRepository
+import com.hs.product.service.ProductSyncHandler
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 

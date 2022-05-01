@@ -5,7 +5,7 @@ import com.hs.config.Resilience4jConfig.Api
 import com.hs.dto.service.output.FindProductResultDto
 import com.hs.exception.RequestFailException
 import com.hs.response.SuccessResponse
-import com.hs.service.ProductSyncHandler
+import com.hs.product.service.ProductSyncHandler
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
 import org.springframework.stereotype.Component
 import retrofit2.Call
