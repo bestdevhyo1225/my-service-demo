@@ -24,4 +24,4 @@
 
 ## 아키텍쳐
 
-<img width="1889" alt="image" src="https://user-images.githubusercontent.com/23515771/166138373-8bec01c9-baa7-43a7-aa26-a0c5a51c90a5.png">
+<img width="1889" alt="image" src="https://user-images.githubusercontent.com/23515771/166138640-0f7b4d73-03b2-4882-9e16-ac223985f33d.png">
