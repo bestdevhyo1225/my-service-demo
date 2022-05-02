@@ -36,3 +36,7 @@ spring:
           initial-interval: 3s
           max-interval: 10s
           max-attempts: 5
+
+logging:
+  level:
+    org.springframework.orm.jpa: debug
