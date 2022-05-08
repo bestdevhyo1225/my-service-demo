@@ -42,12 +42,17 @@ class ProductQueueListener(
         val xDeathCount = xDeathHeader["count"] as Long
         val queue = xDeathHeader["queue"] as String
 
-        if (xDeathCount >= InternalQueueRetry.MAX_ATTEMPT) {
+        if (xDeathCount > InternalQueueRetry.MAX_ATTEMPT) {
             log.error("Message exceed retry max attempt (message : {})", message)
 
             channel.basicReject(deliveryTag, false)
         } else {
-            log.warn("Send from ProductDeadLetterQueue to ProductQueue (xDeathCount: {})", xDeathCount)
+            log.warn(
+                "Send from [{}] to [{}] (xDeathCount: {})",
+                InternalQueueName.PRODUCT_DLQ,
+                InternalQueueName.PRODUCT,
+                xDeathCount
+            )
 
             rabbitTemplate.send(queue, message)
 
