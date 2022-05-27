@@ -44,6 +44,6 @@ dependencies {
     runtimeOnly("com.h2database:h2")
 }
 
-sourceSets["main"].withConvention(KotlinSourceSet::class) {
-    kotlin.srcDir("$buildDir/generated/querydsl")
+kotlin.sourceSets.main {
+    setBuildDir("$buildDir")
 }
