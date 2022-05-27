@@ -18,4 +18,7 @@ dependencies {
 
     // Spring
     implementation("org.springframework:spring-tx:5.3.19")
+
+    // Coroutines Core
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
 }

@@ -7,10 +7,10 @@ spring:
 
   datasource:
     hikari:
-      jdbc-url: jdbc:h2:tcp://localhost/~/test
-      username: sa
-      password:
-      driver-class-name: org.h2.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:9306/dev?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+      username: root
+      password: example
 
   data:
     # Application이 종료 되어이야 MongoDB Connection이 끊기는 부분을 확인했음.
@@ -43,8 +43,7 @@ spring:
 
   redis:
     host: localhost
-    cache:
-      port: 6379
+    port: 6379
 
 retrofit:
   connectionTimeoutSeconds: 30

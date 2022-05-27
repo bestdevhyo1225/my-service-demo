@@ -16,13 +16,13 @@ class RedisConfig(
     @Value("\${spring.redis.host}")
     private val host: String,
 
-    @Value("\${spring.redis.cache.port}")
-    private val cachePort: Int,
+    @Value("\${spring.redis.port}")
+    private val port: Int,
 ) {
 
     @Bean
     fun redisConnectionFactory(): RedisConnectionFactory {
-        return LettuceConnectionFactory(RedisStandaloneConfiguration(host, cachePort))
+        return LettuceConnectionFactory(RedisStandaloneConfiguration(host, port))
     }
 
     @Bean

@@ -21,8 +21,12 @@ include("infrastructure:jpa")
 findProject(":infrastructure:jpa")?.name = "jpa"
 include("infrastructure:mongodb")
 findProject(":infrastructure:mongodb")?.name = "mongodb"
+include("infrastructure:mongodb-reactive")
+findProject(":infrastructure:mongodb-reactive")?.name = "mongodb-reactive"
 include("infrastructure:redis")
 findProject(":infrastructure:redis")?.name = "redis"
+include("infrastructure:redis-reactive")
+findProject(":infrastructure:redis-reactive")?.name = "redis-reactive"
 include("infrastructure:retrofit2")
 findProject(":infrastructure:retrofit2")?.name = "retrofit2"
 
