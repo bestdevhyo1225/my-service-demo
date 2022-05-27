@@ -13,10 +13,10 @@
 │   └── event-publisher-worker
 ├── infrastructure
 │   ├── jpa
-│   ├── mongodb
 │   ├── mongodb-reactive
-│   ├── redis
+│   ├── mongodb
 │   ├── redis-reactive
+│   ├── redis
 │   └── retrofit2
 └── internal-app
     ├── admin
