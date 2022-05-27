@@ -30,7 +30,7 @@
 
 <img width="1888" alt="image" src="https://user-images.githubusercontent.com/23515771/166139292-a11321dc-98d5-4e90-8d0e-2942277fae62.png">
 
-## Internal
+## :factory: Internal App
 
 ### Admin 모듈
 
@@ -68,7 +68,7 @@
 - `infrastructure:monogodb-reactive`
 - `infrastructure:redis-reactive`
 
-## Infrastructure
+## :gear: Infrastructure
 
 ### Jpa 모듈
 
