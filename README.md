@@ -68,7 +68,7 @@
 - `infrastructure:monogodb-reactive`
 - `infrastructure:redis-reactive`
 
-## :gear: Infrastructure
+## :gear: :hammer_and_wrench: :chains: Infrastructure
 
 ### Jpa 모듈
 
