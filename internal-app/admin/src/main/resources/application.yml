@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:9306/dev?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+      username: root
+      password: example
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000
+    open-in-view: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: changeme
+    ssl:
+      enabled: false
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-interval: 10s
+          max-attempts: 5
+
+logging:
+  level:
+    org.springframework.orm.jpa: debug
