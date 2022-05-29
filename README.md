@@ -34,12 +34,16 @@
 
 ### Admin 모듈
 
+- `spring-boot-starter-amqp`
+- `spring-boot-starter-web`
 - `common`
 - `domain`
 - `infrastructure:jpa`
 
 ### Batch 모듈
 
+- `spring-boot-starter-amqp`
+- `spring-boot-starter-batch`
 - `common`
 - `domain`
 - `infrastructure:jpa`
@@ -48,12 +52,16 @@
 
 ### Command 모듈
 
+- `spring-boot-starter-amqp`
+- `spring-boot-starter-web`
 - `common`
 - `domain`
 - `infrastructure:jpa`
 
 ### Event Worker 모듈
 
+- `spring-boot-starter-amqp`
+- `spring-boot-starter-web`
 - `common`
 - `domain`
 - `infrastructure:jpa`
@@ -63,6 +71,7 @@
 
 ### Query 모듈
 
+- `spring-boot-starter-webflux`
 - `common`
 - `domain`
 - `infrastructure:monogodb-reactive`
