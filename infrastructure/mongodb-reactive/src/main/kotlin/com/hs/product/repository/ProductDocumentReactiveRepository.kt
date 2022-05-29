@@ -24,7 +24,11 @@ class ProductDocumentReactiveRepository(
     }
 
     fun update(product: Product) {
-        productReactiveMongoTemplate.save(ProductDocumentMapper.toDocument(product = product))
+        findProductDocumentByProductId(productId = product.id!!)
+            .flatMap {
+                it.change(name = product.name, price = product.price, stockQuantity = product.stockQuantity)
+                productReactiveMongoTemplate.save(it)
+            }
             .flatMap { Mono.just(ProductDocumentMapper.reflectDomainProperty(source = it, target = product)) }
             .subscribe()
     }
@@ -43,7 +47,6 @@ class ProductDocumentReactiveRepository(
     private fun findProductDocumentByProductId(productId: Long): Mono<ProductDocument> {
         return productReactiveMongoTemplate
             .findOne(Query(getCriteriaProductId(productId)), ProductDocument::class.java)
-            .flatMap { Mono.just(it) }
             .switchIfEmpty { Mono.error { NoSuchElementException("product document is not exist.") } }
     }
 

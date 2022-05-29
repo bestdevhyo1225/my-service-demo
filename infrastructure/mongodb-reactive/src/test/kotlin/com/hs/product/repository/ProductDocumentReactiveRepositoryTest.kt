@@ -49,6 +49,52 @@ internal class ProductDocumentReactiveRepositoryTest : DescribeSpec() {
             }
         }
 
+        describe("update 메서드는") {
+            it("Product를 수정한다.") {
+                // given
+                val saveProduct = Product.create(
+                    id = 1L,
+                    name = "상품1",
+                    price = 30_000,
+                    stockQuantity = 10,
+                    createdAt = LocalDateTime.now().withNano(0),
+                    updatedAt = LocalDateTime.now().withNano(0)
+                )
+                productDocumentReactiveRepository.save(product = saveProduct)
+
+                val updateProduct = Product.create(
+                    id = saveProduct.id!!,
+                    name = "상품 수정",
+                    price = 35_000,
+                    stockQuantity = 15,
+                    createdAt = LocalDateTime.now().withNano(0),
+                    updatedAt = LocalDateTime.now().withNano(0)
+                )
+
+                // when
+                productDocumentReactiveRepository.update(product = updateProduct)
+
+                // then
+                val monoFindProduct = productDocumentReactiveRepository.findById(productId = updateProduct.id!!)
+
+                monoFindProduct.subscribe { consumer ->
+                    consumer.shouldNotBeNull()
+                    consumer.id.shouldNotBeNull()
+                    consumer.id!!.shouldBe(updateProduct.id!!)
+                    consumer.name.shouldBe(updateProduct.name)
+                    consumer.price.shouldBe(updateProduct.price)
+                    consumer.createdAt.shouldNotBeNull()
+                    consumer.createdAt!!.shouldBe(updateProduct.createdAt!!)
+                    consumer.updatedAt.shouldNotBeNull()
+                    consumer.updatedAt!!.shouldBe(updateProduct.updatedAt!!)
+                }
+
+                productDocumentReactiveRepository
+                    .deleteById(productId = updateProduct.id!!)
+                    .subscribe { consumer -> consumer.shouldBe(1) }
+            }
+        }
+
         describe("findById 메서드는") {
             it("Product를 반환한다.") {
                 // given
