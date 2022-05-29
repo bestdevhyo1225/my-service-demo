@@ -34,6 +34,12 @@ class ProductDocumentReactiveRepository(
             .flatMap { Mono.just(ProductDocumentMapper.toDomain(source = it)) }
     }
 
+    fun deleteById(productId: Long): Mono<Long> {
+        return productReactiveMongoTemplate
+            .remove(Query(getCriteriaProductId(productId)), ProductDocument::class.java)
+            .flatMap { Mono.just(it.deletedCount) }
+    }
+
     private fun findProductDocumentByProductId(productId: Long): Mono<ProductDocument> {
         return productReactiveMongoTemplate
             .findOne(Query(getCriteriaProductId(productId)), ProductDocument::class.java)

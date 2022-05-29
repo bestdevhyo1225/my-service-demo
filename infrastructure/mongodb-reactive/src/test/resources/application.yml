@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: test
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+      database: test
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: debug
