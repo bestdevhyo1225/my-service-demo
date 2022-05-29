@@ -15,5 +15,6 @@ dependencies {
     implementation(project(":infrastructure:retrofit2"))
 
     // Spring Boot Stater
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-amqp")
 }
