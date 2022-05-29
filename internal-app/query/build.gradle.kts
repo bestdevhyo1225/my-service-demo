@@ -8,7 +8,6 @@ plugins {
 dependencies {
     // Project
     implementation(project(":common"))
-    implementation(project(":domain"))
     implementation(project(":infrastructure:mongodb-reactive"))
     implementation(project(":infrastructure:redis-reactive"))
 
