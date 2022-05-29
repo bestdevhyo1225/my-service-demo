@@ -64,7 +64,6 @@
 ### Query 모듈
 
 - `common`
-- `domain`
 - `infrastructure:monogodb-reactive`
 - `infrastructure:redis-reactive`
 
