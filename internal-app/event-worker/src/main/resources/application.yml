@@ -24,8 +24,6 @@ spring:
   jpa:
     properties:
       hibernate:
-        show_sql: true
-        format_sql: true
         default_batch_fetch_size: 1000
     open-in-view: false
 
@@ -68,6 +66,7 @@ api:
 
 logging:
   level:
+    org.hibernate.SQL: debug
     com.rabbitmq.client: debug
     org.springframework.data.mongodb.core.MongoTemplate: debug
     com.hs.repository.ProductRedisRepository: debug
